@@ -1,0 +1,15 @@
+.side__bar
+  .header__left
+    .header__left__users
+      .header__left__users__name
+        masa
+      .header__left__users__contents
+        = link_to "#", class: "edit__icon" do
+          = icon('fas', 'edit', class: "icon")
+          %span>
+        = link_to "#", class: "setting__icon" do
+          = icon('fas', 'cog',  class: "icon")
+          %span>
+  .side__bar__contents
+    = render "side_bar_groups"
+    = render "side_bar_groups"
