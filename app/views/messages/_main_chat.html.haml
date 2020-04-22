@@ -1,0 +1,22 @@
+.main_chat
+  .header__right
+    .header__right__left
+      .header__right__left__name
+        test
+      .header__right__left__members
+        Member：masa,nozomi
+    .header__right__right
+      = link_to "#", class: "header_edit" do
+        Edit
+  .message
+    = render "message"
+    = render "message"
+  .message__form
+    .message__form__wrapper
+      = form_for "#", html: { class: "form__contents" } do |f|
+        .message_bar
+          =f.text_field :text, class: "message_area", placeholder: "type a messege"
+          %label.image_label
+            = icon('far', 'image', class: "image-icon")
+            =f.file_field :upload_file, class: "hidden-image"
+        =f.submit "Send", class:"send_btn"
