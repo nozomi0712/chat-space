@@ -1,10 +1,10 @@
 .side__bar
   .header__left
     .header__left__users
-      .header__left__users__name
-        masa
+      %h3.header__left__users__name
+        = current_user.name
       .header__left__users__contents
-        = link_to "#", class: "edit__icon" do
+        = link_to edit_user_path(current_user), class: "edit__icon" do
           = icon('fas', 'edit', class: "icon")
           %span>
         = link_to "#", class: "setting__icon" do
