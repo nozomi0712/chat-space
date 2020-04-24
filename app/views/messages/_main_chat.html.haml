@@ -9,8 +9,13 @@
       = link_to "#", class: "header_edit" do
         Edit
   .message
-    = render "message"
-    = render "message"
+    .message__details
+      .message__details__user
+        nozomi
+      .message__details__time
+        2020/07/12(mon) 15:00
+.message__content
+  hello
   .message__form
     .message__form__wrapper
       = form_for "#", html: { class: "form__contents" } do |f|

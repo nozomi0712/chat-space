@@ -29,7 +29,7 @@
         }
       }
     }
-    &__contents {
+    &__lists {
       width: 300px;
       height: calc(100vh - 100px);
       background-color: #2f3e51;
@@ -37,12 +37,14 @@
       .group {
         padding: 20px;
         color: $white;
-        &__name {
+        font-size: 10px; 
+        .group__name {
           font-size: 15px;
+          color: $white;
+          text-decoration: none;
         }
-        &__meaages {
+        .group__meaages {
           margin-top: 5px;
-          font-size: 11px; 
         }
       }
     }
