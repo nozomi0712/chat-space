@@ -1,16 +1,20 @@
-  
 .side__bar
   .header__left
     .header__left__users
       %h3.header__left__users__name
         = current_user.name
       .header__left__users__contents
-        = link_to edit_user_path(current_user), class: "edit__icon" do
+        = link_to new_group_path, class: "edit__icon" do
           = icon('fas', 'edit', class: "icon")
           %span>
-        = link_to "#", class: "setting__icon" do
+        = link_to edit_user_path(current_user), class: "setting__icon" do
           = icon('fas', 'cog',  class: "icon")
           %span>
-  .side__bar__contents
-    = render "side_bar_groups"
-    = render "side_bar_groups"
+  .side__bar__lists
+    - current_user.groups.each do |group|
+      .group
+        = link_to '#' do
+          .group__name
+            = group.name
+        .group__message
+          メッセージはまだありません。
