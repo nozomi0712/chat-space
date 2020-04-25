@@ -2,26 +2,30 @@
   .header__right
     .header__right__left
       .header__right__left__name
-        test
+        = @group.name
       .header__right__left__members
-        Member：masa,nozomi
+        - @group.users.each do |user|
+          =user.name
     .header__right__right
-      = link_to "#", class: "header_edit" do
+      = link_to edit_group_path(@group.id), class: "header_edit" do
         Edit
   .message
-    .message__details
-      .message__details__user
-        nozomi
-      .message__details__time
-        2020/07/12(mon) 15:00
-.message__content
-  hello
+    -@posts.each do |message|
+      .message__details
+        .message__details__user
+          =message.user.name
+        .message__details__time
+          =message.created_at.strftime("%Y年%m月%d日 %H時%M分")
+      .message__content
+        - if message.text.present?
+          = message.text
+        = image_tag message.image.url if message.image.present?
   .message__form
     .message__form__wrapper
-      = form_for "#", html: { class: "form__contents" } do |f|
+      = form_for [@group, @post], url: group_messages_path(@group), html: { class: "form__contents" } do |f|
         .message_bar
           =f.text_field :text, class: "message_area", placeholder: "type a messege"
           %label.image_label
             = icon('far', 'image', class: "image-icon")
-            =f.file_field :upload_file, class: "hidden-image"
+            =f.file_field :image, class: "hidden-image"
         =f.submit "Send", class:"send_btn"
