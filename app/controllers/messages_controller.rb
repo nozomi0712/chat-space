@@ -4,13 +4,15 @@ class MessagesController < ApplicationController
   def index
     @post = Post.new
     @posts = @group.posts.includes(:user)
-
   end
   
   def create
     @post = @group.posts.create(post_params)
+
     if @post.save
-      redirect_to group_messages_path(@group), notice: "メッセージが送信されました"
+      respond_to do |format|
+        format.json
+      end
     else
       @posts = @group.posts.includes(:user)
       flash.now[:alert] = 'メッセージを入力してください。'
